@@ -1,0 +1,10 @@
+install.packages("dplyr")
+library("dplyr")
+getwd()
+head(mtcars)
+
+select(mtcars,"mpg","hp")
+filter(mtcars,mpg>25)
+summarise_all(mtcars,mean)
+mutate(mtcars,hp_mpg=hp+mpg)
+mutate(mtcars,qsec/carb)
