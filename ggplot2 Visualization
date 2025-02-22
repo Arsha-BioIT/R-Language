@@ -1,0 +1,32 @@
+# Install and load ggplot2 (Install only once)
+install.packages("ggplot2")  # Run this manually if not installed
+library(ggplot2)  
+
+# Creating the dataset
+df <- data.frame(
+  category = c("A", "B", "C", "D"),
+  value = c(5, 7, 3, 8),
+  x = c(1, 2, 3, 4),
+  y = c(2, 3, 5, 7)
+)
+
+print(df)  # Display dataset
+
+# ---- Line Plot ---- #
+ggplot(df, aes(x = x, y = y)) +
+  geom_line(color = "blue", linewidth = 1) +  # `linewidth` instead of `size`
+  geom_point(color = "red", size = 4) +
+  labs(title = "Line Plot", x = "X-axis", y = "Y-axis") +
+  theme_dark()
+
+# ---- Scatter Plot ---- #
+ggplot(df, aes(x = x, y = y)) +
+  geom_point(color = "red", size = 4) +
+  labs(title = "Scatter Plot", x = "X-axis", y = "Y-axis") +
+  theme_minimal()
+
+# ---- Bar Plot ---- #
+ggplot(df, aes(x = category, y = value)) +
+  geom_bar(stat = "identity", fill = "green", color = "black") +
+  labs(title = "Bar Plot", x = "Category", y = "Value") +  # Better labels
+  theme_classic()
