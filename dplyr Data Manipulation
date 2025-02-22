@@ -1,0 +1,64 @@
+# Load necessary library
+install.packages("dplyr")  # Install dplyr if not installed
+library(dplyr)  # Load dplyr package
+
+# ---- Creating DataFrame ---- #
+df <- data.frame(
+  name = c("John", "Alice", "Bob", "Emily"),
+  age = c(25, 34, 28, 40),
+  city = c("New York", "Chicago", "Los Angeles", "Seattle")
+)
+
+print(df)  # Display the dataset
+
+# ---- Filtering Data ---- #
+filtered_df <- df %>% filter(age > 30)
+print(filtered_df)
+
+filtered_df2 <- df %>% filter(age > 30 | name == "Emily" | name == "Bob")
+print(filtered_df2)
+
+filtered_df3 <- df %>% filter(age > 30 & name == "Emily")
+print(filtered_df3)
+
+filtered_df4 <- df %>% filter((age > 30 & name == "Emily") | (city %in% c("Seattle", "Los Angeles")))
+print(filtered_df4)
+
+filtered_df5 <- filter(df, age > 30)
+print(filtered_df5)
+
+# ---- Employee Dataset Example ---- #
+employees <- data.frame(
+  ID = 1:10,
+  Name = c("John", "Jane", "Bill", "Anna", "Tom", "Sue", "Mike", "Sara", "Alex", "Nina"),
+  Department = c("HR", "Finance", "IT", "Finance", "IT", "HR", "IT", "Finance", "HR", "Finance"),
+  Salary = c(50000, 60000, 70000, 65000, 72000, 48000, 75000, 67000, 52000, 69000)
+)
+
+print(employees)  # Display employee dataset
+
+# ---- Filtering Employees ---- #
+print(filter(employees, Salary >= 60000))
+print(filter(employees, Department == "Finance" & Salary > 65000))
+print(filter(employees, Name %in% c("Bill", "Tom", "Mike")))
+print(filter(employees, Department == "IT" | Department == "HR"))
+
+# ---- More dplyr Functions ---- #
+df2 <- data.frame(
+  name = c("John", "Alice", "Bob", "Bob", "Emily", "Emily"),
+  age = c(25, 34, 28, 28, 40, 25),
+  city = c("New York", "Chicago", "Los Angeles", "Seattle", "Seattle", "Seattle")
+)
+
+print(df2)
+
+# ---- Selecting Specific Columns ---- #
+selected_df <- df2 %>% select(name, city)
+print(selected_df)
+
+# ---- Grouping and Summarizing ---- #
+grouped_by_name <- df2 %>% group_by(name) %>% summarise(mean_age = mean(age))
+print(grouped_by_name)
+
+grouped_by_city <- df2 %>% group_by(city) %>% summarise(mean_age = mean(age))
+print(grouped_by_city)
