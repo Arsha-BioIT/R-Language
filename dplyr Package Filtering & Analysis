@@ -1,0 +1,24 @@
+# Load necessary package
+install.packages("dplyr")
+library(dplyr)
+
+# Check working directory
+getwd()
+
+# Preview dataset
+head(mtcars)
+
+# Select specific columns
+select(mtcars, mpg, hp)
+
+# Filter rows where mpg > 25
+filter(mtcars, mpg > 25)
+
+# Summarize all columns using mean
+summarise(across(everything(), mean))
+
+# Add a new column: hp + mpg
+mutate(mtcars, hp_mpg = hp + mpg)
+
+# Add another column: qsec divided by carb
+mutate(mtcars, qsec_per_carb = qsec / carb)
